@@ -52,9 +52,22 @@ public class FileSegmentCombine {
 					
 					writer.close();
 					lines = new ArrayList<String>();
-				}
-							
+				}							
 			}
+			
+			if(lines.size() > 0) {
+				String write_file = seg_path+String.valueOf(line_count/max_lines + 1)+".txt";
+				File file2 = new File(write_file);
+				OutputStreamWriter outputStreamWriter = new OutputStreamWriter(new FileOutputStream(file2));
+				BufferedWriter writer = new BufferedWriter(outputStreamWriter);
+				
+				//write to a new file
+				for(String str : lines)
+					writer.write(str+"\n");
+				
+				writer.close();
+			}
+			
 			reader.close();
 		}else {
 			System.err.println("File:\""+read_file+"\" read failed!");
@@ -100,7 +113,7 @@ public class FileSegmentCombine {
 		String readFile = "E:\\bigfile\\input.txt";
 		String filePath = "E:\\bigfile\\segfiles\\";
 		String writeFile = "E:\\bigfile\\output.txt";
-    		String encoding = "gbk";
+		String encoding = "utf-8";
 		segFile(readFile, filePath, encoding);
 		combineFile(writeFile,filePath, encoding);
 	}
