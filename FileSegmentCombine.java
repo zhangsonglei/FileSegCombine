@@ -100,7 +100,7 @@ public class FileSegmentCombine {
 		String readFile = "E:\\bigfile\\input.txt";
 		String filePath = "E:\\bigfile\\segfiles\\";
 		String writeFile = "E:\\bigfile\\output.txt";
-    String encoding = "gbk";
+    		String encoding = "gbk";
 		segFile(readFile, filePath, encoding);
 		combineFile(writeFile,filePath, encoding);
 	}
